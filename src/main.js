@@ -24,14 +24,14 @@ let m = {
                 console.log("GCL Progress: " + Game.gcl.progress);
             }
             if(Game.time % 10 == 0) {
-                m.setupMem();
-                m.clearMem();
-            };
+				m.setupMem();
+				m.clearMem();
+            }
             if (Game.cpu.bucket < 1000) {
-        	    // if bucket is really low, we skip the tick
-	            console.log("tick skipped due to low cpu bucket!");
-	            return;
-            };
+				// if bucket is really low, we skip the tick
+				console.log("tick skipped due to low cpu bucket!");
+				return;
+            }
             let rooms = _.compact(_.map(Memory.config.rooms,
                 (name) => Game.rooms[name]));
             for(let room of rooms) {
