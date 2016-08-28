@@ -68,7 +68,7 @@ StructureSpawn.prototype.getExpectedCreeps = function(name) {
         }
         let containerCount = room.getContainerCount();
         if(containerCount > 0 && !room.isMine()) {
-            expected.set(sh.CREEP_TRANSPORTER, containerCount * 2);
+            expected.set(sh.CREEP_TRANSPORTER, Math.ceil(containerCount * 1.5));
         }
         if(room.energyCapacityAvailable > 0) {
             if(room.energyCapacityAvailable > 400) {
@@ -94,7 +94,9 @@ StructureSpawn.prototype.getExpectedCreeps = function(name) {
             }
         }
         let numConstructionSites = _.size(room.findConstructionSites());
-        if(numConstructionSites > 1) {
+        if(numConstructionSites > 12) {
+            expected.set(sh.CREEP_BUILDER, 3);
+        } else if(numConstructionSites > 1) {
             expected.set(sh.CREEP_BUILDER, 2);
         } else if(numConstructionSites > 0) {
             expected.set(sh.CREEP_BUILDER, 1);
