@@ -10,6 +10,13 @@ Source.prototype.countHarvestSpots = function() {
                 count++;
             }
         }
+        let tiles2 = this.room.lookForAtArea(LOOK_STRUCTURES, this.pos.y-1,
+            this.pos.x-1, this.pos.y+1, this.pos.x+1, true);
+        for(let tile2 of tiles2) {
+            if(tile2.structure != 'constructedWall') {
+                count--;
+            }
+        }
         this.harvestSpots = count;
     }
     return this.harvestSpots;
